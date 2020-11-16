@@ -4,13 +4,12 @@ import java.util.TreeMap;
 
 public class Symptom implements ISymptom {
     private String name;
-    private int count;
+    private int count = 0;
     private static final TreeMap<String, Integer> symptomsOccurrence = new TreeMap<>();
 
-    Symptom(String name, int count) {
+    Symptom(String name) {
         this.name = name;
-        this.count = count;
-        this.addSymptomOccurrence(name, count);
+        this.addSymptomOccurrence(name);
     }
 
     @Override
@@ -33,11 +32,12 @@ public class Symptom implements ISymptom {
         this.count = count;
     }
 
-    public void addSymptomOccurrence(String name, int previousCount) {
-        symptomsOccurrence.put(name, previousCount + 1);
-    }
+    public void addSymptomOccurrence(String name) {
+        int previous = symptomsOccurrence.get(name) != null
+                ? symptomsOccurrence.get(name) : 0;
 
-    public TreeMap<String, Integer> getSymptomsOccurrence() {
-       return symptomsOccurrence;
+        setCount(previous + 1);
+
+        symptomsOccurrence.put(name, getCount());
     }
 }
