@@ -4,11 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class WriteSymptomDataFile {
-
-    public void writeSymptomData(List<Symptom> symptoms) throws IOException {
-        // next generate output
-        FileWriter writer = new FileWriter("result.out");
+public class WriteSymptomDataFile implements ISymptomWriter {
+    @Override
+    public void writeSymptomData(String filename, List<Symptom> symptoms) throws IOException {
+        FileWriter writer = new FileWriter(filename);
         for(Symptom symptom: symptoms) {
             writer.write(symptom.getName() + " : " + symptom.getCount() + "\n");
         }

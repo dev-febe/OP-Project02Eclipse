@@ -20,4 +20,11 @@ public interface ISymptom {
      * @param count, the symptom count
      */
     public void setCount(int count);
+
+    /**
+     * This function consist to add occurrence to each symptom
+     *
+     * @param name symptom name
+     */
+    public void addSymptomOccurrence(String name);
 }

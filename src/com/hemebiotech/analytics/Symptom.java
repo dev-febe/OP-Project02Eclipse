@@ -32,6 +32,7 @@ public class Symptom implements ISymptom {
         this.count = count;
     }
 
+    @Override
     public void addSymptomOccurrence(String name) {
         int previous = symptomsOccurrence.get(name) != null
                 ? symptomsOccurrence.get(name) : 0;
