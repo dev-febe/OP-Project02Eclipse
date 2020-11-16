@@ -23,16 +23,16 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 	
 	@Override
-	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
-		
+	public List<Symptom> getSymptoms() {
+		ArrayList<Symptom> symptoms = new ArrayList<Symptom>();
+
 		if (filepath != null) {
 			try {
 				BufferedReader reader = new BufferedReader (new FileReader(filepath));
 				String line = reader.readLine();
 				
 				while (line != null) {
-					result.add(line);
+					symptoms.add(new Symptom(line));
 					line = reader.readLine();
 				}
 				reader.close();
@@ -41,7 +41,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 			}
 		}
 		
-		return result;
+		return symptoms;
 	}
 
 }
